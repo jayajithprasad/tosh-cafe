@@ -1,4 +1,7 @@
-import { Instagram, Facebook, MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
+import { Instagram, Facebook, MapPin, Clock, ExternalLink, ArrowRight } from 'lucide-react';
+
+const MAPS_SHARE  = 'https://share.google/krGUvOo347d8nn0s0';
+const MAPS_SEARCH = 'https://www.google.com/search?q=tosh+the+online+stack+house+thiruvananthapuram';
 
 export default function Footer() {
   return (
@@ -56,36 +59,49 @@ export default function Footer() {
             <h4 className="text-lg font-black mb-6">Hours</h4>
             <ul className="space-y-3 text-gray-400 text-sm">
               <li className="flex justify-between">
-                <span>Monday - Friday</span>
-                <span className="text-orange-400">10 AM - 11 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Saturday</span>
-                <span className="text-orange-400">11 AM - 12 AM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Sunday</span>
-                <span className="text-orange-400">11 AM - 11 PM</span>
+                <span>Every Day</span>
+                <span className="text-orange-400">Open Daily</span>
               </li>
             </ul>
+            <a
+              href={MAPS_SEARCH}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 mt-4 text-xs text-gray-500 hover:text-orange-400 transition-colors duration-300"
+            >
+              <Clock className="w-3.5 h-3.5" />
+              Check live hours on Google
+            </a>
           </div>
 
           <div>
             <h4 className="text-lg font-black mb-6">Get In Touch</h4>
             <ul className="space-y-4">
-              {[
-                { icon: MapPin, text: 'Urban Street, City Center' },
-                { icon: Phone, text: '+91 XXXX XXXXXX' },
-                { icon: Mail, text: 'hello@tosh.com' }
-              ].map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <li key={index} className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors duration-300 group cursor-pointer">
-                    <Icon className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                    <span className="text-sm group-hover:translate-x-1 transition-transform duration-300">{item.text}</span>
-                  </li>
-                );
-              })}
+              <li>
+                <a
+                  href={MAPS_SHARE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 text-gray-400 hover:text-orange-400 transition-colors duration-300 group"
+                >
+                  <MapPin className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm group-hover:translate-x-1 transition-transform duration-300 leading-snug">
+                    Thiruvananthapuram, Kerala<br />
+                    <span className="text-xs text-gray-600">TOSH — The Online Stack House</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={MAPS_SEARCH}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-gray-400 hover:text-orange-400 transition-colors duration-300 group"
+                >
+                  <ExternalLink className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                  <span className="text-sm group-hover:translate-x-1 transition-transform duration-300">Find us on Google</span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
