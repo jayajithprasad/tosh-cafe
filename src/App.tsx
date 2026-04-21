@@ -2,8 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Hero from './components/Hero';
 import Exterior from './components/Exterior';
 import Interior from './components/Interior';
-import Menu from './components/Menu';
-import FoodGallery from './components/FoodGallery';
+import Location from './components/Location';
 import Footer from './components/Footer';
 import MenuPage from './pages/MenuPage';
 
@@ -13,8 +12,7 @@ function Home() {
       <Hero />
       <Exterior />
       <Interior />
-      <Menu />
-      <FoodGallery />
+      <Location />
       <Footer />
     </div>
   );

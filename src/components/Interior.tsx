@@ -1,121 +1,171 @@
-import { Coffee, Monitor, Utensils, Zap } from 'lucide-react';
+const steps = [
+  {
+    emoji: '\u{1F331}',
+    label: 'Step 01',
+    title: 'Fresh Sourced',
+    desc: 'Ingredients sourced daily — no frozen shortcuts, no compromise on quality',
+    color: 'border-green-500/25 hover:border-green-500/50',
+    glow: 'group-hover:shadow-[0_16px_50px_rgba(34,197,94,0.1)]',
+    tag: 'bg-green-500/10 text-green-400 border-green-500/20',
+  },
+  {
+    emoji: '\u{1F525}',
+    label: 'Step 02',
+    title: 'Cooked to Order',
+    desc: 'Every burger patty, every batch of fries — made hot when you order it',
+    color: 'border-orange-500/25 hover:border-orange-500/50',
+    glow: 'group-hover:shadow-[0_16px_50px_rgba(249,115,22,0.1)]',
+    tag: 'bg-orange-500/10 text-orange-400 border-orange-500/20',
+  },
+  {
+    emoji: '\u{2728}',
+    label: 'Step 03',
+    title: 'Served Instantly',
+    desc: 'Straight from the kitchen to your hands — hot, fresh, never left waiting',
+    color: 'border-yellow-500/25 hover:border-yellow-500/50',
+    glow: 'group-hover:shadow-[0_16px_50px_rgba(234,179,8,0.1)]',
+    tag: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
+  },
+];
+
+const qualities = [
+  { emoji: '\u{1F9C2}', title: 'House Seasoning',   desc: 'Our own spice blends on everything' },
+  { emoji: '\u{1F35E}', title: 'Freshly Baked Buns', desc: 'Soft, toasted, never stale' },
+  { emoji: '\u{1F9C4}', title: 'Crisp Vegetables',  desc: 'Farm-fresh, crunchy every bite' },
+  { emoji: '\u{2764}',  title: 'Made with Love',    desc: 'Every plate gets our full attention' },
+];
+
+const floatItems = [
+  { e: '\u{1F354}', x: '1%',  y: '10%', s: 'text-4xl', d: '0s',   o: '0.05' },
+  { e: '\u{1F525}', x: '93%', y: '8%',  s: 'text-3xl', d: '1.2s', o: '0.05' },
+  { e: '\u{1F35F}', x: '2%',  y: '62%', s: 'text-3xl', d: '0.6s', o: '0.04' },
+  { e: '\u{1F964}', x: '94%', y: '55%', s: 'text-3xl', d: '1.8s', o: '0.04' },
+  { e: '\u{2728}',  x: '48%', y: '1%',  s: 'text-xl',  d: '2s',   o: '0.08' },
+];
 
 export default function Interior() {
-  const features = [
-    {
-      icon: Utensils,
-      title: 'Minimalist Aesthetic',
-      desc: 'Clean black and white palette with warm wooden accents. Every detail curated for perfection.'
-    },
-    {
-      icon: Monitor,
-      title: 'Digital Displays',
-      desc: 'High-contrast dark theme with vibrant orange highlights. Modern, engaging menu boards.'
-    },
-    {
-      icon: Coffee,
-      title: 'Open Kitchen',
-      desc: 'Watch your burger being crafted. Premium barista coffee machines on full display.'
-    }
-  ];
-
   return (
-    <section className="relative py-24 bg-gradient-to-b from-black to-gray-950 text-white overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500 rounded-full blur-3xl"></div>
+    <section className="relative py-24 bg-[#070707] text-white overflow-hidden">
+
+      {/* Glows */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-orange-500/[0.035] blur-[130px]" />
+        <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-yellow-500/[0.025] blur-[100px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-6">THE INTERIOR</h2>
-          <p className="text-xl text-gray-400">Modern fast-casual dining reimagined for today's discerning customer</p>
+      {/* Floating emojis */}
+      {floatItems.map((f, i) => (
+        <div key={i} className={`absolute ${f.s} select-none pointer-events-none animate-float`}
+          style={{ left: f.x, top: f.y, opacity: f.o, animationDelay: f.d }}>
+          {f.e}
+        </div>
+      ))}
+
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+
+        {/* ── HEADER ── */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-orange-500/20 bg-orange-500/[0.06] mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+            <span className="text-orange-400 text-[10px] font-semibold tracking-[0.25em] uppercase">Made In-House</span>
+          </div>
+          <h2
+            className="font-black tracking-tighter leading-none mb-4"
+            style={{ fontSize: 'clamp(2.5rem,6vw,5rem)' }}
+          >
+            THE{' '}
+            <span className="bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-500 bg-clip-text text-transparent animate-gradient-flow"
+              style={{ backgroundSize: '200% auto' }}>
+              CRAFT
+            </span>
+          </h2>
+          <p className="text-gray-500 text-lg font-light max-w-lg mx-auto">
+            Every item prepared with care — from raw ingredient to your first bite
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-          <div className="space-y-8">
-            {features.map((feature, index) => {
-              const IconComponent = feature.icon;
-              return (
-                <div key={index} className="group cursor-pointer">
-                  <div className="flex gap-4 mb-3">
-                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-xl flex items-center justify-center group-hover:shadow-lg group-hover:shadow-orange-500/50 transition-all duration-300">
-                      <IconComponent className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold group-hover:text-orange-400 transition-colors duration-300">{feature.title}</h3>
-                    </div>
-                  </div>
-                  <p className="text-gray-400 leading-relaxed ml-16">{feature.desc}</p>
+        {/* ── PROCESS STEPS ── */}
+        <div className="grid sm:grid-cols-3 gap-5 mb-10">
+          {steps.map((s, i) => (
+            <div
+              key={i}
+              className={`group relative rounded-3xl bg-white/[0.025] border ${s.color} ${s.glow} p-7 overflow-hidden transition-all duration-300 hover:-translate-y-2 cursor-default`}
+              style={{ animation: `fadeInUp 0.5s ease-out ${i * 100}ms both` }}
+            >
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl" />
+
+              <div className="relative z-10">
+                <div className="w-16 h-16 rounded-2xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-4xl mb-5
+                                group-hover:scale-110 transition-transform duration-300">
+                  {s.emoji}
                 </div>
-              );
-            })}
-          </div>
+                <span className={`inline-block px-2.5 py-1 rounded-full border text-[10px] font-bold tracking-widest uppercase mb-3 ${s.tag}`}>
+                  {s.label}
+                </span>
+                <h3 className="text-xl font-bold mb-2 group-hover:text-orange-400 transition-colors duration-300">{s.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+              </div>
 
-          <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 rounded-3xl blur-2xl"></div>
-            <div className="relative grid grid-cols-2 gap-3 md:gap-4">
-              <div className="col-span-2 overflow-hidden rounded-2xl h-56 md:h-72">
-                <img
-                  src="https://images.pexels.com/photos/2788792/pexels-photo-2788792.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Modern cafe interior"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-              </div>
-              <div className="overflow-hidden rounded-2xl h-48 md:h-56">
-                <img
-                  src="https://images.pexels.com/photos/1307698/pexels-photo-1307698.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  alt="Cafe seating area"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                />
-              </div>
-              <div className="overflow-hidden rounded-2xl h-48 md:h-56">
-                <img
-                  src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  alt="Coffee bar"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                />
-              </div>
+              {/* Step connector arrow — hide on last */}
+              {i < 2 && (
+                <div className="hidden sm:flex absolute -right-3 top-1/2 -translate-y-1/2 z-20 w-6 h-6 rounded-full bg-[#070707] border border-white/[0.08] items-center justify-center">
+                  <span className="text-white/30 text-xs">›</span>
+                </div>
+              )}
             </div>
-          </div>
+          ))}
         </div>
 
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-900 via-black to-gray-900 border border-gray-800 p-12 md:p-16 text-center group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-          <div className="relative">
-            <div className="flex items-center justify-center gap-2 mb-6">
-              <Zap className="w-5 h-5 text-orange-500" />
-              <span className="text-orange-500 font-bold text-sm tracking-widest uppercase">Feature Wall</span>
-              <Zap className="w-5 h-5 text-orange-500" />
-            </div>
-            <h3 className="text-4xl md:text-6xl font-black tracking-tight text-white mb-4">
-              STACK IT.
-              <br />
-              <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
-                BITE IT. LOVE IT.
-              </span>
-            </h3>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto mt-6">
-              LED neon signage illuminates our feature wall, creating the perfect backdrop for your unforgettable moments
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-20 grid md:grid-cols-3 gap-6">
-          {[
-            { title: 'Metal + Wood', desc: 'Industrial-chic seating that inspires' },
-            { title: 'Feature Wall', desc: 'Iconic TOSH logo statement' },
-            { title: 'Warm Lighting', desc: 'Cinematic, inviting atmosphere' }
-          ].map((item, index) => (
-            <div key={index} className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-8 hover:border-orange-500 transition-all duration-300">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500/10 to-yellow-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-              <div className="relative">
-                <div className="w-12 h-12 bg-orange-500/20 rounded-xl mb-4 flex items-center justify-center group-hover:bg-orange-500/30 transition-colors duration-300"></div>
-                <h4 className="text-xl font-bold mb-2 group-hover:text-orange-400 transition-colors duration-300">{item.title}</h4>
-                <p className="text-gray-400">{item.desc}</p>
+        {/* ── QUALITY GRID ── */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+          {qualities.map((q, i) => (
+            <div
+              key={i}
+              className="group flex flex-col items-center text-center gap-3 p-5 rounded-2xl bg-white/[0.025] border border-white/[0.07]
+                         hover:border-orange-500/25 hover:bg-white/[0.04] hover:-translate-y-1
+                         hover:shadow-[0_12px_40px_rgba(249,115,22,0.07)] transition-all duration-300 cursor-default"
+              style={{ animation: `fadeInUp 0.45s ease-out ${i * 70}ms both` }}
+            >
+              <div className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.07] flex items-center justify-center text-2xl
+                              group-hover:scale-110 group-hover:border-orange-500/30 transition-all duration-300">
+                {q.emoji}
+              </div>
+              <div>
+                <p className="text-sm font-bold text-white/90 group-hover:text-orange-400 transition-colors duration-300">{q.title}</p>
+                <p className="text-[11px] text-gray-600 leading-snug mt-0.5">{q.desc}</p>
               </div>
             </div>
           ))}
         </div>
+
+        {/* ── SLOGAN BANNER ── */}
+        <div className="relative overflow-hidden rounded-3xl border border-white/[0.06] bg-white/[0.02] p-10 sm:p-14 text-center">
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/[0.06] via-transparent to-yellow-500/[0.04]" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px bg-gradient-to-r from-transparent via-orange-500/40 to-transparent" />
+          <div className="absolute -bottom-12 -right-12 w-64 h-64 rounded-full bg-orange-500/[0.05] blur-[80px]" />
+
+          <div className="relative z-10">
+            <span className="text-[10px] text-orange-400 font-bold tracking-[0.35em] uppercase mb-4 block">
+              ✦ &nbsp;The TOSH Promise&nbsp; ✦
+            </span>
+            <h3
+              className="font-black tracking-tighter text-white leading-none mb-3"
+              style={{ fontSize: 'clamp(2.2rem,6vw,4.5rem)' }}
+            >
+              STACK IT.{' '}
+              <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent animate-gradient-flow"
+                style={{ backgroundSize: '200% auto' }}>
+                BITE IT.
+              </span>
+              {' '}LOVE IT.
+            </h3>
+            <p className="text-gray-500 text-sm max-w-md mx-auto leading-relaxed mt-4">
+              Every order is a commitment — fresh ingredients, bold flavors, zero compromise
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
   );
